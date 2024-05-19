@@ -1,0 +1,13 @@
+version: '3'
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    volumes:
+      - /volume1/docker/vaultwarden:/data/
+    restart: always
+    ports:
+      - "7700:80"
+    environment:
+      - DOMAIN=https://your.domain.com
+      - ADMIN_TOKEN=your.super.strong.passwrod.token
