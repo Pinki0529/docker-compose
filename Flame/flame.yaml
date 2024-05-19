@@ -1,0 +1,17 @@
+version: "4.1"
+services:
+  flame:
+    container_name: Flame
+    image: pawelmalak/flame
+    mem_limit: 4g
+    cpu_shares: 768
+    security_opt:
+      - no-new-privileges:true
+    restart: on-failure:5
+    ports:
+      - 5210:5005
+    volumes:
+      - /volume1/docker/flame:/app/data:rw
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      PASSWORD: password
