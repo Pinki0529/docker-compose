@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  wireshark:
+    container_name: Wireshark
+    image: ghcr.io/linuxserver/wireshark #:latest
+    mem_limit: 4g
+    cpu_shares: 1024
+    security_opt:
+      - no-new-privileges:true
+    cap_add:
+      - NET_ADMIN
+    restart: on-failure:5
+    ports:
+      - 3333:3000
+    volumes:
+      - /volume1/docker/wireshark:/config:rw
+    environment:
+      TZ: Europe/Warsaw
+      PUID: 0
+      PGID: 0
+      CUSTOM_USER: USERname
+      PASSWORD: userPASSWORD
